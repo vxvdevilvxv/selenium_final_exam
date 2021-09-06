@@ -12,10 +12,11 @@ class BasketPage(BasePage):
             *BasketPageLocators.EMPTY_BASKET).text, 'Basket is not empty'
 
     def items_is_absent(self, timeout=3):
+        flag = False
         try:
             WebDriverWait(self.browser, timeout).until(
                 EC.visibility_of_element_located(BasketPageLocators.BASKET_ITEMS))
         except TimeoutException:
-            return True
+            flag = True
 
-        return False
+        assert flag, 'Some items in basket'
