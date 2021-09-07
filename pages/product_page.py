@@ -6,16 +6,9 @@ from .locators import ProductPageLocators
 
 class ProductPage(BasePage):
 
-    def start(self):
-        self.add_to_basket()
-        self.equals_title()
-        self.equals_price()
-        self.should_not_be_success_message()
-
     def add_to_basket(self):
         button = self.browser.find_element(*ProductPageLocators.ADD_TO_BASKET_BUTTON)
         button.click()
-        #self.solve_quiz_and_get_code()
 
     def equals_title(self):
         book_title = self.browser.find_element(*ProductPageLocators.BOOK_NAME_CATALOG).text
